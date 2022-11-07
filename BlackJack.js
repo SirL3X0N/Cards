@@ -1,15 +1,15 @@
+cards = [2,3,4,5,6,7,8,9,10,'J','Q','K','A']
+suits = ['H', 'D', 'C', 'S']
+hand = []
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-cards = [' Two ',' Three ',' Four ', ' Five ', ' Six ', ' Seven ', ' Eight ', ' Nine ', ' Ten ', ' Jack ', ' Queen ', ' King ', ' Ace ']
-suits = [' Hearts ', ' Daimonds ', ' Clubs ', ' Spades ']
-hand = []
-
 function generateCard(cards, suits) {
     cardDigit = cards[getRandomInt(13)]
     cardSuit = suits[getRandomInt(4)]
-    card = cardDigit + 'of' + cardSuit
+    card = cardDigit + cardSuit
     return card
 }
 
