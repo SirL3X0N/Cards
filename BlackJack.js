@@ -15,7 +15,7 @@ function generateCard(cards, suits) {
 
 hand.push(generateCard(cards, suits))
 
-while (hand.length < 5) {
+while (hand.length < 2) {
     card = generateCard(cards, suits)
     duplicateCard = false
 
