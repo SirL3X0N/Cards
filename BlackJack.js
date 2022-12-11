@@ -65,10 +65,12 @@ function gameEnd() {
         `
     picturesOfCards/${botHand[1][1]}.png
         `
+}
+function revealCount() {
     document.getElementById("botValue").innerHTML =
         `
-    The Bot's Hand = ${botHandValue}
-        `
+The Bot's Hand = ${botHandValue}
+    `
 }
 
 // ----- Counting function --------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -98,16 +100,19 @@ function countHand(localHand) {
 function youLose() {
     console.log('you lose')
     gameEnd()
+    revealCount()
 }
 
 function youWin() {
     console.log('you Win')
     gameEnd()
+    revealCount()
 }
 
 function itsaDraw() {
     console.log("it's a draw")
     gameEnd()
+    revealCount()
 }
 
 function BLACKJACK() {
@@ -229,17 +234,17 @@ Your Hand = ${playersHandValue}
         youLose()
     } else if (playersHand.length == 5) {
         youWin()
+    } else if (playersHandValue == 21) {
+        stand()
     }
 }
 
 // ----- Stand functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function stand() {
-    while (botHandValue < 17 && bothand.length < 5) {
+    while (botHandValue < 17 && botHand.length < 5) {
         bot()
-        console.log(botHand, '  ', botHandValue)
     }
-    gameEnd()
     if (botHand.length > 2) {
         document.getElementById("dealerCard3").src =
             `
@@ -259,7 +264,9 @@ function stand() {
 	`
     }
 
-    if (bothand.length == 5 && botHandValue <= 21) {
+    if (botHandValue > 21) {
+        youWin()
+    } else if (botHand.length == 5) {
         youLose()
     } else if (botHandValue > playersHandValue) {
         youLose()
