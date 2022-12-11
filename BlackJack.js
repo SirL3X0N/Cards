@@ -48,20 +48,15 @@ function drawCard(deck) {
 
 // ----- Button functions ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// document.getElementById('standButton').onclick = function () {
-// standpt1(botHand, botHandValue, botHandValue, theDealtCard)
-// }
+document.getElementById('standButton').onclick = function () {
+    stand(botHand, botHandValue, botHandValue, theDealtCard)
+}
 document.getElementById('dealButton').onclick = function () {
     resetEverything(playersHand, botHand)
 }
 document.getElementById('hitmeButton').onclick = function () {
     hitPlayer(theDealtCard, playersHand, botHandValue)
 }
-
-function gameStart() {
-
-}
-
 function gameEnd() {
     document.getElementById('dealButton').removeAttribute('disabled')
     document.getElementById('standButton').setAttribute('disabled', 'disabled')
@@ -70,10 +65,12 @@ function gameEnd() {
         `
     picturesOfCards/${botHand[1][1]}.png
         `
+}
+function revealCount() {
     document.getElementById("botValue").innerHTML =
         `
-    The Bot's Hand = ${botHandValue}
-        `
+The Bot's Hand = ${botHandValue}
+    `
 }
 
 // ----- Counting function --------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -101,27 +98,35 @@ function countHand(localHand) {
 // ----- Results ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function youLose() {
+    console.log('you lose')
     gameEnd()
+    revealCount()
 }
 
 function youWin() {
+    console.log('you Win')
     gameEnd()
+    revealCount()
 }
 
 function itsaDraw() {
+    console.log("it's a draw")
     gameEnd()
+    revealCount()
 }
 
 function BLACKJACK() {
+    console.log('BLACKJACK')
     gameEnd()
     document.getElementById("playersValue").innerHTML =
-        "BLACK JACK"
+        "BLACK JACK!!!"
 }
 
 function botBlackJack() {
+    console.log("bot BLACKJACK")
     gameEnd()
     document.getElementById("botValue").innerHTML =
-        "BLACK JACK"
+        "BLACK JACK!!!"
 }
 
 // ------ New Game --------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -171,14 +176,13 @@ function newGame() {
         `
 		Your Hand = ${playersHandValue}
 		`
-    if (playersHandValue == 21 && botHandValue < 21) {
-        BLACKJACK()
-    }
-    if (botHandValue == 21 && playersHandValue < 21) {
-        botBlackJack()
-    }
+
     if (playersHandValue == 21 && botHandValue == 21) {
         itsaDraw()
+    } else if (playersHandValue == 21) {
+        BLACKJACK()
+    } else if (botHandValue == 21) {
+        botBlackJack()
     }
 }
 
@@ -228,8 +232,47 @@ Your Hand = ${playersHandValue}
     }
     if (playersHandValue > 21) {
         youLose()
-    }
-    if (playersHand.length == 5) {
+    } else if (playersHand.length == 5) {
         youWin()
+    } else if (playersHandValue == 21) {
+        stand()
+    }
+}
+
+// ----- Stand functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function stand() {
+    while (botHandValue < 17 && botHand.length < 5) {
+        bot()
+    }
+    if (botHand.length > 2) {
+        document.getElementById("dealerCard3").src =
+            `
+	picturesOfCards/${botHand[2][1]}.png
+	`
+    }
+    if (botHand.length > 3) {
+        document.getElementById("dealerCard4").src =
+            `
+	picturesOfCards/${botHand[3][1]}.png
+	`
+    }
+    if (botHand.length > 4) {
+        document.getElementById("dealerCard5").src =
+            `
+	picturesOfCards/${botHand[4][1]}.png
+	`
+    }
+
+    if (botHandValue > 21) {
+        youWin()
+    } else if (botHand.length == 5) {
+        youLose()
+    } else if (botHandValue > playersHandValue) {
+        youLose()
+    } else if (playersHandValue > botHandValue) {
+        youWin()
+    } else if (playersHandValue == botHandValue) {
+        itsaDraw()
     }
 }
