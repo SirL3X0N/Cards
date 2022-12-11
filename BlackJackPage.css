@@ -1,0 +1,74 @@
+.myButtonsArntDumb01 {
+    position: fixed;
+    bottom: 0rem;
+    width: 8rem;
+}
+
+.myButtonsArntDumb02 {
+    position: fixed;
+    bottom: 2.5rem;
+    width: 8rem;
+}
+
+.myButtonsArntDumb03 {
+    position: fixed;
+    bottom: 5rem;
+    width: 8rem;
+}
+
+.myButtonsArntDumb {
+    position: fixed;
+    bottom: 0rem;
+    width: 8rem;
+    height: 7.5rem;
+    background-color: rgb(0, 0, 0);
+}
+
+.playerCardBox {
+    text-align: center;
+    position: fixed;
+    border: 0.3rem rgb(255, 255, 255) dashed;
+    bottom: 0%;
+    right: 20%;
+    width: 60%;
+    height: 30%;
+}
+
+.dealerCardBox {
+    text-align: center;
+    position: fixed;
+    border: 0.3rem rgb(255, 255, 255) dashed;
+    top: 0%;
+    right: 20%;
+    width: 60%;
+    height: 30%;
+}
+
+.aCard {
+    margin: 0.8%;
+    height: 95%;
+}
+
+.thePlayersResults {
+    position: fixed;
+    right: 1%;
+    bottom: 1%;
+    width: 13%;
+    height: 4%;
+    background-color: rgba(83, 83, 83, 0.42);
+}
+
+.theBotsResults {
+    position: fixed;
+    right: 1%;
+    bottom: 6%;
+    width: 13%;
+    height: 4%;
+    background-color: rgba(83, 83, 83, 0.42);
+}
+
+.aScore {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1.2rem;
+}
