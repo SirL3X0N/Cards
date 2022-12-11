@@ -1,27 +1,41 @@
 .myButtonsArntDumb01 {
     position: fixed;
-    bottom: 0rem;
-    width: 8rem;
+    bottom: .25rem;
+    left: .25rem;
+    width: 12.5rem;
+    height: 3.4rem;
 }
 
 .myButtonsArntDumb02 {
     position: fixed;
-    bottom: 2.5rem;
-    width: 8rem;
+    bottom: 3.85rem;
+    left: .25rem;
+    width: 12.5rem;
+    height: 3.4rem;
 }
 
 .myButtonsArntDumb03 {
     position: fixed;
-    bottom: 5rem;
-    width: 8rem;
+    bottom: 7.5rem;
+    left: .25rem;
+    width: 12.5rem;
+    height: 3.4rem;
+}
+
+.aBorder {
+    position: fixed;
+    bottom: 0rem;
+    width: 13.4rem;
+    height: 11.35rem;
+    background-color: rgba(109, 70, 20, 0.838);
 }
 
 .myButtonsArntDumb {
     position: fixed;
     bottom: 0rem;
-    width: 8rem;
-    height: 7.5rem;
-    background-color: rgb(0, 0, 0);
+    width: 13.1rem;
+    height: 11.15rem;
+    background-color: rgb(192, 125, 17);
 }
 
 .playerCardBox {
