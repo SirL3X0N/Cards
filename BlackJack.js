@@ -57,11 +57,6 @@ document.getElementById('dealButton').onclick = function () {
 document.getElementById('hitmeButton').onclick = function () {
     hitPlayer(theDealtCard, playersHand, botHandValue)
 }
-
-function gameStart() {
-
-}
-
 function gameEnd() {
     document.getElementById('dealButton').removeAttribute('disabled')
     document.getElementById('standButton').setAttribute('disabled', 'disabled')
