@@ -200,7 +200,7 @@ function hitPlayer() {
     }
     if (playersHandValue > 21) {
         youLose()
-    } else if (playersHand.length == 5 && playersHandValue > 22) {
+    } else if (playersHand.length == 5 && playersHandValue < 22) {
         youWin()
     } else if (playersHandValue == 21) {
         stand()
@@ -213,21 +213,28 @@ function stand() {
     while (botHandValue < 17 && botHand.length < 5) {
         bot()
     }
+    document.getElementById("dealerCard1").src =
+        `
+    picturesOfCards/${botHand[1][1]}.png
+        `
     for (let index = 2; index < botHand.length; index++) {
-        document.getElementById("dealerCard" + [index]).src =
-            `
-        picturesOfCards/${botHand[index][1]}.png
-            `
+        setTimeout(() => {
+            document.getElementById("dealerCard" + [index]).src =
+                `
+    picturesOfCards/${botHand[index][1]}.png
+        ` }, [index] * 200)
     }
-    if (botHandValue > 21) {
-        youWin()
-    } else if (botHand.length == 5 && botHandValue < 22) {
-        youLose()
-    } else if (botHandValue > playersHandValue) {
-        youLose()
-    } else if (playersHandValue > botHandValue) {
-        youWin()
-    } else if (playersHandValue == botHandValue) {
-        itsaDraw()
-    }
+    setTimeout(() => {
+        if (botHandValue > 21) {
+            youWin()
+        } else if (botHand.length == 5 && botHandValue < 22) {
+            youLose()
+        } else if (botHandValue > playersHandValue) {
+            youLose()
+        } else if (playersHandValue > botHandValue) {
+            youWin()
+        } else if (playersHandValue == botHandValue) {
+            itsaDraw()
+        };
+    }, 800)
 }
