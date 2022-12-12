@@ -61,17 +61,15 @@ function gameEnd() {
     document.getElementById('dealButton').removeAttribute('disabled')
     document.getElementById('standButton').setAttribute('disabled', 'disabled')
     document.getElementById('hitmeButton').setAttribute('disabled', 'disabled')
-    document.getElementById("dealerCard2").src =
+    document.getElementById("dealerCard1").src =
         `
     picturesOfCards/${botHand[1][1]}.png
         `
     document.getElementById('outcome').style.display = "block"
-}
-function revealCount() {
     document.getElementById("botValue").innerHTML =
         `
-Dealer's Hand = ${botHandValue}
-    `
+        Dealer's Hand = ${botHandValue}
+        `
 }
 
 // ----- Counting function --------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -100,7 +98,6 @@ function countHand(localHand) {
 
 function youLose() {
     gameEnd()
-    revealCount()
     document.getElementById('winOrLose').innerHTML =
         "You Lost"
 }
@@ -108,13 +105,11 @@ function youWin() {
     document.getElementById('winOrLose').innerHTML =
         "You Won"
     gameEnd()
-    revealCount()
 }
 function itsaDraw() {
     document.getElementById('winOrLose').innerHTML =
         "It's a Draw"
     gameEnd()
-    revealCount()
 }
 function bj() {
     gameEnd()
@@ -139,46 +134,31 @@ function resetEverything(playersHand, botHand) {
     document.getElementById('dealButton').setAttribute('disabled', 'disabled')
     playersHand.splice(0, 5)
     botHand.splice(0, 5)
-    document.getElementById("playerCard3").src =
-        "picturesOfCards\None.png"
-    document.getElementById("playerCard4").src =
-        "picturesOfCards\None.png"
-    document.getElementById("playerCard5").src =
-        "picturesOfCards\None.png"
-    document.getElementById("dealerCard3").src =
-        "picturesOfCards\None.png"
-    document.getElementById("dealerCard4").src =
-        "picturesOfCards\None.png"
-    document.getElementById("dealerCard5").src =
-        "picturesOfCards\None.png"
+    for (let index = 0; index < 5; index++) {
+        document.getElementById("playerCard" + [index]).src =
+            "picturesOfCards\None.png"
+        document.getElementById("dealerCard" + [index]).src =
+            "picturesOfCards\None.png"
+    }
     document.getElementById("botValue").innerHTML = "Dealer's Hand = 0"
     document.getElementById('outcome').style.display = "none"
     newGame()
 }
-
 function newGame() {
     for (let index = 0; index < 2; index++) {
         player()
         bot()
+        document.getElementById("playerCard" + [index]).src =
+            `
+        picturesOfCards/${playersHand[index][1]}.png
+            `
     }
-    document.getElementById("playerCard1").src =
-        `
-	picturesOfCards/${playersHand[0][1]}.png
-	    `
-    document.getElementById("playerCard2").src =
-        `
-	picturesOfCards/${playersHand[1][1]}.png
-	    `
-    document.getElementById("dealerCard1").src =
+    document.getElementById("dealerCard0").src =
         `
 	picturesOfCards/${botHand[0][1]}.png
-	`
-    document.getElementById("dealerCard2").src =
+	    `
+    document.getElementById("dealerCard1").src =
         "picturesOfCards\\Back.png"
-    document.getElementById("playersValue").innerHTML =
-        `
-		Your Hand = ${playersHandValue}
-		`
     if (playersHandValue == 21 && botHandValue == 21) {
         itsaDraw()
     } else if (playersHandValue == 21) {
@@ -187,15 +167,17 @@ function newGame() {
         bbj()
     }
 }
-
 function player() {
     drawCard(deck)
     playersHand.push(theDealtCard[0])
     theDealtCard.splice(0, 1)
     countHand(playersHand)
     playersHandValue = returnedValue
+    document.getElementById("playersValue").innerHTML =
+        `
+ Your Hand = ${playersHandValue}
+    `
 }
-
 function bot() {
     drawCard(deck)
     botHand.push(theDealtCard[0])
@@ -210,31 +192,15 @@ function hitPlayer() {
     if (playersHand.length < 5 && playersHandValue < 21) {
         player()
     }
-    document.getElementById("playersValue").innerHTML =
-        `
-Your Hand = ${playersHandValue}
-`
-    if (playersHand.length > 2) {
-        document.getElementById("playerCard3").src =
+    for (let index = 2; index < playersHand.length; index++) {
+        document.getElementById("playerCard" + [index]).src =
             `
-	picturesOfCards/${playersHand[2][1]}.png
-	`
-    }
-    if (playersHand.length > 3) {
-        document.getElementById("playerCard4").src =
+         picturesOfCards/${playersHand[index][1]}.png
             `
-	picturesOfCards/${playersHand[3][1]}.png
-	`
-    }
-    if (playersHand.length > 4) {
-        document.getElementById("playerCard5").src =
-            `
-	picturesOfCards/${playersHand[4][1]}.png
-	`
     }
     if (playersHandValue > 21) {
         youLose()
-    } else if (playersHand.length == 5) {
+    } else if (playersHand.length == 5 && playersHandValue > 22) {
         youWin()
     } else if (playersHandValue == 21) {
         stand()
@@ -247,28 +213,15 @@ function stand() {
     while (botHandValue < 17 && botHand.length < 5) {
         bot()
     }
-    if (botHand.length > 2) {
-        document.getElementById("dealerCard3").src =
+    for (let index = 2; index < botHand.length; index++) {
+        document.getElementById("dealerCard" + [index]).src =
             `
-	picturesOfCards/${botHand[2][1]}.png
-	`
-    }
-    if (botHand.length > 3) {
-        document.getElementById("dealerCard4").src =
+        picturesOfCards/${botHand[index][1]}.png
             `
-	picturesOfCards/${botHand[3][1]}.png
-	`
     }
-    if (botHand.length > 4) {
-        document.getElementById("dealerCard5").src =
-            `
-	picturesOfCards/${botHand[4][1]}.png
-	`
-    }
-
     if (botHandValue > 21) {
         youWin()
-    } else if (botHand.length == 5) {
+    } else if (botHand.length == 5 && botHandValue < 22) {
         youLose()
     } else if (botHandValue > playersHandValue) {
         youLose()
