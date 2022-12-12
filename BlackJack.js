@@ -70,7 +70,7 @@ function gameEnd() {
 function revealCount() {
     document.getElementById("botValue").innerHTML =
         `
-The Bot's Hand = ${botHandValue}
+Dealer's Hand = ${botHandValue}
     `
 }
 
@@ -151,7 +151,7 @@ function resetEverything(playersHand, botHand) {
         "picturesOfCards\None.png"
     document.getElementById("dealerCard5").src =
         "picturesOfCards\None.png"
-    document.getElementById("botValue").innerHTML = "The Bot's Hand = 0"
+    document.getElementById("botValue").innerHTML = "Dealer's Hand = 0"
     document.getElementById('outcome').style.display = "none"
     newGame()
 }
