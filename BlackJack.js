@@ -65,6 +65,7 @@ function gameEnd() {
         `
     picturesOfCards/${botHand[1][1]}.png
         `
+    document.getElementById('outcome').style.display = "block"
 }
 function revealCount() {
     document.getElementById("botValue").innerHTML =
@@ -98,35 +99,36 @@ function countHand(localHand) {
 // ----- Results ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function youLose() {
-    console.log('you lose')
     gameEnd()
     revealCount()
+    document.getElementById('winOrLose').innerHTML =
+        "You Lost"
 }
-
 function youWin() {
-    console.log('you Win')
+    document.getElementById('winOrLose').innerHTML =
+        "You Won"
     gameEnd()
     revealCount()
 }
-
 function itsaDraw() {
-    console.log("it's a draw")
+    document.getElementById('winOrLose').innerHTML =
+        "It's a Draw"
     gameEnd()
     revealCount()
 }
-
-function BLACKJACK() {
-    console.log('BLACKJACK')
+function bj() {
     gameEnd()
     document.getElementById("playersValue").innerHTML =
         "BLACK JACK!!!"
+    document.getElementById('winOrLose').innerHTML =
+        "BLACK JACK!!!"
 }
-
-function botBlackJack() {
-    console.log("bot BLACKJACK")
+function bbj() {
     gameEnd()
     document.getElementById("botValue").innerHTML =
         "BLACK JACK!!!"
+    document.getElementById('winOrLose').innerHTML =
+        "You Lost"
 }
 
 // ------ New Game --------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -137,7 +139,6 @@ function resetEverything(playersHand, botHand) {
     document.getElementById('dealButton').setAttribute('disabled', 'disabled')
     playersHand.splice(0, 5)
     botHand.splice(0, 5)
-    newGame()
     document.getElementById("playerCard3").src =
         "picturesOfCards\None.png"
     document.getElementById("playerCard4").src =
@@ -151,6 +152,8 @@ function resetEverything(playersHand, botHand) {
     document.getElementById("dealerCard5").src =
         "picturesOfCards\None.png"
     document.getElementById("botValue").innerHTML = "The Bot's Hand = 0"
+    document.getElementById('outcome').style.display = "none"
+    newGame()
 }
 
 function newGame() {
@@ -176,13 +179,12 @@ function newGame() {
         `
 		Your Hand = ${playersHandValue}
 		`
-
     if (playersHandValue == 21 && botHandValue == 21) {
         itsaDraw()
     } else if (playersHandValue == 21) {
-        BLACKJACK()
+        bj()
     } else if (botHandValue == 21) {
-        botBlackJack()
+        bbj()
     }
 }
 

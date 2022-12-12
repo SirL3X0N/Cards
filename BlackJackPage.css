@@ -86,3 +86,20 @@
     text-align: center;
     font-size: 1.2rem;
 }
+
+.outcome {
+    display: none;
+    position: fixed;
+    bottom: 40%;
+    right: 0%;
+    width: 100%;
+    height: 20%;
+    background-color: rgba(57, 57, 57, 0.643);
+}
+
+.outcometxt {
+    color: white;
+    font-weight: bold;
+    font-size: 600%;
+    text-align: center;
+}
