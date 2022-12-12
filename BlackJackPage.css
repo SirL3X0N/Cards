@@ -61,6 +61,7 @@
 .aCard {
     margin: 0.8%;
     height: 95%;
+    max-width: 16.7%;
 }
 
 .thePlayersResults {

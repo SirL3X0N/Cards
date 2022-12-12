@@ -136,9 +136,9 @@ function resetEverything(playersHand, botHand) {
     botHand.splice(0, 5)
     for (let index = 0; index < 5; index++) {
         document.getElementById("playerCard" + [index]).src =
-            "picturesOfCards\None.png"
+            "picturesOfCards/None.png"
         document.getElementById("dealerCard" + [index]).src =
-            "picturesOfCards\None.png"
+            "picturesOfCards/None.png"
     }
     document.getElementById("botValue").innerHTML = "Dealer's Hand = 0"
     document.getElementById('outcome').style.display = "none"
