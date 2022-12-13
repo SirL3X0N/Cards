@@ -20,7 +20,8 @@ function generateCard(cards, suits) {
     cardSuit = suits[getRandomInt(4)]
     techCard = cardDigit[1] + cardSuit
     cardValue = cardDigit[0]
-    card = [cardValue, techCard]
+    cardNumber = cardDigit[1]
+    card = [cardValue, techCard, cardNumber]
     return card
 }
 function shuffleDeck(deck) {
@@ -236,5 +237,5 @@ function stand() {
         } else if (playersHandValue == botHandValue) {
             itsaDraw()
         };
-    }, 800)
+    }, (botHand.length) * 200)
 }

@@ -3,30 +3,38 @@
     bottom: .25rem;
     left: .25rem;
     width: 12.5rem;
-    height: 3.4rem;
+    height: 2.8rem;
 }
 
 .myButtonsArntDumb02 {
     position: fixed;
-    bottom: 3.85rem;
+    bottom: 3.3rem;
     left: .25rem;
     width: 12.5rem;
-    height: 3.4rem;
+    height: 2.8rem;
 }
 
 .myButtonsArntDumb03 {
     position: fixed;
-    bottom: 7.5rem;
+    bottom: 6.35rem;
     left: .25rem;
     width: 12.5rem;
-    height: 3.4rem;
+    height: 2.8rem;
+}
+
+.myButtonsArntDumb04 {
+    position: fixed;
+    bottom: 9.4rem;
+    left: .25rem;
+    width: 12.5rem;
+    height: 2.8rem;
 }
 
 .aBorder {
     position: fixed;
     bottom: 0rem;
     width: 13.4rem;
-    height: 11.35rem;
+    height: 12.65rem;
     background-color: rgba(109, 70, 20, 0.838);
 }
 
@@ -34,7 +42,7 @@
     position: fixed;
     bottom: 0rem;
     width: 13.1rem;
-    height: 11.15rem;
+    height: 12.45rem;
     background-color: rgb(192, 125, 17);
 }
 
