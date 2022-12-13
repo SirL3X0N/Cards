@@ -58,10 +58,16 @@ document.getElementById('dealButton').onclick = function () {
 document.getElementById('hitmeButton').onclick = function () {
     hitPlayer(theDealtCard, playersHand, botHandValue)
 }
-function gameEnd() {
-    document.getElementById('dealButton').removeAttribute('disabled')
+document.getElementById('DDButton').onclick = function () {
+    DoubleDown(playersHand, playersHandValue, theDealtCard)
+}
+function disable() {
     document.getElementById('standButton').setAttribute('disabled', 'disabled')
     document.getElementById('hitmeButton').setAttribute('disabled', 'disabled')
+    document.getElementById('DDButton').setAttribute('disabled', 'disabled')
+}
+function gameEnd() {
+    disable()
     document.getElementById("dealerCard1").src =
         `
     picturesOfCards/${botHand[1][1]}.png
@@ -71,6 +77,7 @@ function gameEnd() {
         `
         Dealer's Hand = ${botHandValue}
         `
+    document.getElementById('dealButton').removeAttribute('disabled')
 }
 
 // ----- Counting function --------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -130,6 +137,7 @@ function bbj() {
 // ------ New Game --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function resetEverything(playersHand, botHand) {
+    document.getElementById('DDButton').removeAttribute('disabled')
     document.getElementById('hitmeButton').removeAttribute('disabled')
     document.getElementById('standButton').removeAttribute('disabled')
     document.getElementById('dealButton').setAttribute('disabled', 'disabled')
@@ -190,6 +198,7 @@ function bot() {
 // ----- Hit functions ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function hitPlayer() {
+    document.getElementById('DDButton').setAttribute('disabled', 'disabled')
     if (playersHand.length < 5 && playersHandValue < 21) {
         player()
     }
@@ -207,10 +216,21 @@ function hitPlayer() {
         stand()
     }
 }
+function DoubleDown() {
+    player()
+    document.getElementById("playerCard2").src =
+        `
+        picturesOfCards/${playersHand[2][1]}.png
+            `
+    if (playersHandValue > 21) {
+        youLose()
+    } else { stand(botHand, botHandValue, botHandValue, theDealtCard) }
+}
 
 // ----- Stand functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function stand() {
+    disable()
     while (botHandValue < 17 && botHand.length < 5) {
         bot()
     }
@@ -236,6 +256,6 @@ function stand() {
             youWin()
         } else if (playersHandValue == botHandValue) {
             itsaDraw()
-        };
+        }
     }, (botHand.length) * 200)
 }
