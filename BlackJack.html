@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="BlackJackPage.css">
     <title>BlackJack</title>
   </head>
-  <div class="aBorder"></div>
   <body style="background-color: green;">
+    <div class="aBorder"></div>
     <div class="myButtonsArntDumb">
         <Button type="button" id="dealButton" class="btn btn-light myButtonsArntDumb01 "> New Game </Button>
         <Button type="button" id="hitmeButton" class="btn btn-light myButtonsArntDumb02"  disabled="disabled"> Hit Me </Button>
@@ -36,12 +36,17 @@
     <div class="thePlayersResults">
         <p id="playersValue" class="aScore">Your Hand = 0</p>
     </div>
-    
     <div class="theBotsResults">
         <p id="botValue" class="aScore">Dealer's Hand = 0</p>
     </div>
-<div class="outcome" id="outcome">
-  <p class="outcometxt" id="winOrLose">  You Win</p>
+    <div class="currency">
+       <p id="Coins" class="aScore">Coins = 100</p>
+    </div>
+    <div class="buyin">
+        <p id="Coins" class="BuyBuy">Buy In = 2 Coins</p>
+    </div>
+    <div class="outcome" id="outcome">
+    <p class="outcometxt" id="winOrLose">  You Win</p>
     </div>
     <!-- <div class="Betting">
       <div class="toBetUp">
@@ -53,7 +58,7 @@
       <div class="toBetDown">
         <img class="myicon" src="Dicons\caret down.png">
     </div>
-  </div> -->
+    </div> -->
 
     <!-- Optional JavaScript -->
     <script src="BlackJack.js"></script>

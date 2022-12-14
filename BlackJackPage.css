@@ -84,16 +84,41 @@
 .theBotsResults {
     position: fixed;
     right: 1%;
-    bottom: 6%;
+    bottom: 6.5%;
     width: 14%;
     height: 4%;
+    background-color: rgba(83, 83, 83, 0.42);
+}
+
+.currency {
+    position: fixed;
+    right: 1%;
+    bottom: 12%;
+    width: 14%;
+    height: 4%;
+    background-color: rgb(139, 128, 29);
+    border: 0.15rem black solid;
+}
+
+.buyin {
+    position: fixed;
+    right: 1%;
+    bottom: 17.5%;
+    width: 14%;
+    height: 6%;
     background-color: rgba(83, 83, 83, 0.42);
 }
 
 .aScore {
     color: rgb(255, 255, 255);
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+}
+
+.BuyBuy {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 .outcome {
