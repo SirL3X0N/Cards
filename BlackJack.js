@@ -145,7 +145,11 @@ function itsaDraw() {
     statisticbar[2]++
     statisticbar[8]--
     statisticbar[9]--
-    console.log(statisticbar[9])
+    if (DD == true) {
+        Currency = Currency + (BuyIn * 2)
+    } else {
+        Currency = Currency + BuyIn
+    }
     document.getElementById('winOrLose').innerHTML =
         "It's a Draw"
     gameEnd()
@@ -195,6 +199,8 @@ function newGame() {
     statisticbar[8]++
     document.getElementById('TH').innerHTML = statisticbar[3]
     Currency = Currency - BuyIn
+    document.getElementById('Coins').innerHTML =
+        'Coins = ' + (Currency)
     for (let index = 0; index < 2; index++) {
         player()
         bot()
@@ -262,10 +268,11 @@ function hitPlayer() {
 function DoubleDown() {
     statisticbar[6]++
     statisticbar[9]++
-    console.log(statisticbar[9])
     document.getElementById('DD').innerHTML = statisticbar[6]
     DD = true
     Currency = Currency - BuyIn
+    document.getElementById('Coins').innerHTML =
+        'Coins = ' + (Currency)
     player()
     document.getElementById("playerCard2").src =
         `
