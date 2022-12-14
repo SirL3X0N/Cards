@@ -9,6 +9,9 @@ let botHandValue = 0
 localHand = []
 localHandValue = []
 let returnedValue = null
+BuyIn = 2
+Currency = 100
+DD = false
 
 // ----- Deck functions -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -78,6 +81,8 @@ function gameEnd() {
         Dealer's Hand = ${botHandValue}
         `
     document.getElementById('dealButton').removeAttribute('disabled')
+    document.getElementById('Coins').innerHTML =
+        'Coins = ' + (Currency)
 }
 
 // ----- Counting function --------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -110,6 +115,11 @@ function youLose() {
         "You Lost"
 }
 function youWin() {
+    if (DD == true) {
+        Currency = (Currency + (BuyIn * 4))
+    } else {
+        Currency = (Currency + (BuyIn * 2))
+    }
     document.getElementById('winOrLose').innerHTML =
         "You Won"
     gameEnd()
@@ -120,6 +130,7 @@ function itsaDraw() {
     gameEnd()
 }
 function bj() {
+    Currency = (Currency + (BuyIn * 2))
     gameEnd()
     document.getElementById("playersValue").innerHTML =
         "BLACK JACK!!!"
@@ -141,6 +152,7 @@ function resetEverything(playersHand, botHand) {
     document.getElementById('hitmeButton').removeAttribute('disabled')
     document.getElementById('standButton').removeAttribute('disabled')
     document.getElementById('dealButton').setAttribute('disabled', 'disabled')
+    DD = false
     playersHand.splice(0, 5)
     botHand.splice(0, 5)
     for (let index = 0; index < 5; index++) {
@@ -154,6 +166,7 @@ function resetEverything(playersHand, botHand) {
     newGame()
 }
 function newGame() {
+    Currency = Currency - BuyIn
     for (let index = 0; index < 2; index++) {
         player()
         bot()
@@ -217,6 +230,8 @@ function hitPlayer() {
     }
 }
 function DoubleDown() {
+    DD = true
+    Currency = Currency - BuyIn
     player()
     document.getElementById("playerCard2").src =
         `
