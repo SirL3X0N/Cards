@@ -169,3 +169,17 @@
 .myicon {
     width: 60%;
 }
+
+.myStatTable {
+    position: fixed;
+    left: 0rem;
+    top: 0rem;
+    width: 15.1rem;
+    font-size: 0.75rem;
+    background-color: rgba(82, 82, 82, 0.481);
+}
+
+.playingWithFire {
+    width: 3.5rem;
+    text-align: center;
+}

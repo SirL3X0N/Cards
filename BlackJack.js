@@ -1,6 +1,7 @@
 cards = [[11, 'A'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7, '7'], [8, '8'], [9, '9'], [10, '10'], [10, 'J'], [10, 'Q'], [10, 'K'],]
 suits = ['H', 'D', 'C', 'S']
 deck = []
+statisticbar = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 theDealtCard = []
 playersHand = []
 let playersHandValue = 0
@@ -47,6 +48,7 @@ function drawCard(deck) {
     }
     theDealtCard.push(deck[0])
     deck.splice(0, 1)
+    statisticbar[5]++
     return (theDealtCard)
 }
 
@@ -83,6 +85,18 @@ function gameEnd() {
     document.getElementById('dealButton').removeAttribute('disabled')
     document.getElementById('Coins').innerHTML =
         'Coins = ' + (Currency)
+    document.getElementById('HW').innerHTML = statisticbar[0]
+    document.getElementById('HL').innerHTML = statisticbar[1]
+    document.getElementById('HD').innerHTML = statisticbar[2]
+    document.getElementById('BJ').innerHTML = statisticbar[4]
+    document.getElementById('TCD').innerHTML = statisticbar[5]
+    document.getElementById('DD').innerHTML = statisticbar[6]
+    if (statisticbar[9] > 0) {
+        document.getElementById('DDSR').innerHTML = Math.round(statisticbar[7] / statisticbar[9] * 100) + '%'
+    }
+    if (statisticbar[8] > 0) {
+        document.getElementById('WLR').innerHTML = Math.round(statisticbar[0] / statisticbar[8] * 100) + '%'
+    }
 }
 
 // ----- Counting function --------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -110,12 +124,15 @@ function countHand(localHand) {
 // ----- Results ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function youLose() {
+    statisticbar[1]++
     gameEnd()
     document.getElementById('winOrLose').innerHTML =
         "You Lost"
 }
 function youWin() {
+    statisticbar[0]++
     if (DD == true) {
+        statisticbar[7]++
         Currency = (Currency + (BuyIn * 4))
     } else {
         Currency = (Currency + (BuyIn * 2))
@@ -125,11 +142,17 @@ function youWin() {
     gameEnd()
 }
 function itsaDraw() {
+    statisticbar[2]++
+    statisticbar[8]--
+    statisticbar[9]--
+    console.log(statisticbar[9])
     document.getElementById('winOrLose').innerHTML =
         "It's a Draw"
     gameEnd()
 }
 function bj() {
+    statisticbar[0]++
+    statisticbar[4]++
     Currency = (Currency + (BuyIn * 2))
     gameEnd()
     document.getElementById("playersValue").innerHTML =
@@ -138,6 +161,8 @@ function bj() {
         "BLACK JACK!!!"
 }
 function bbj() {
+    statisticbar[1]++
+    statisticbar[4]++
     gameEnd()
     document.getElementById("botValue").innerHTML =
         "BLACK JACK!!!"
@@ -166,6 +191,9 @@ function resetEverything(playersHand, botHand) {
     newGame()
 }
 function newGame() {
+    statisticbar[3]++
+    statisticbar[8]++
+    document.getElementById('TH').innerHTML = statisticbar[3]
     Currency = Currency - BuyIn
     for (let index = 0; index < 2; index++) {
         player()
@@ -181,6 +209,7 @@ function newGame() {
 	    `
     document.getElementById("dealerCard1").src =
         "picturesOfCards\\Back.png"
+    document.getElementById('TCD').innerHTML = statisticbar[5]
     if (playersHandValue == 21 && botHandValue == 21) {
         itsaDraw()
     } else if (playersHandValue == 21) {
@@ -220,6 +249,7 @@ function hitPlayer() {
             `
          picturesOfCards/${playersHand[index][1]}.png
             `
+        document.getElementById('TCD').innerHTML = statisticbar[5]
     }
     if (playersHandValue > 21) {
         youLose()
@@ -230,6 +260,10 @@ function hitPlayer() {
     }
 }
 function DoubleDown() {
+    statisticbar[6]++
+    statisticbar[9]++
+    console.log(statisticbar[9])
+    document.getElementById('DD').innerHTML = statisticbar[6]
     DD = true
     Currency = Currency - BuyIn
     player()
@@ -237,6 +271,7 @@ function DoubleDown() {
         `
         picturesOfCards/${playersHand[2][1]}.png
             `
+    document.getElementById('TCD').innerHTML = statisticbar[5]
     if (playersHandValue > 21) {
         youLose()
     } else { stand(botHand, botHandValue, botHandValue, theDealtCard) }
