@@ -242,6 +242,9 @@ function newGame() {
     document.getElementById("dealerCard1").src =
         "picturesOfCards\\Back.png"
     document.getElementById('TCD').innerHTML = statisticbar[5]
+    if (Currency < BuyIn) {
+        document.getElementById('DDButton').setAttribute('disabled', 'disabled')
+    }
     if (playersHandValue == 21 && botHandValue == 21) {
         itsaDraw()
     } else if (playersHandValue == 21) {
