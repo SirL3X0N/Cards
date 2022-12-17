@@ -245,6 +245,9 @@ function newGame() {
     if (Currency < BuyIn) {
         document.getElementById('DDButton').setAttribute('disabled', 'disabled')
     }
+    if (playersHand[0][2] == playersHand[1][2]) {
+        document.getElementById('splitButton').removeAttribute('disabled')
+    }
     if (playersHandValue == 21 && botHandValue == 21) {
         itsaDraw()
     } else if (playersHandValue == 21) {
@@ -311,6 +314,12 @@ function DoubleDown() {
     if (playersHandValue > 21) {
         youLose()
     } else { stand(botHand, botHandValue, botHandValue, theDealtCard) }
+}
+function Split() {
+    for (let index = 0; index < playersHand.length; index++) {
+        console.log(playersHand[index][2])
+    }
+    document.getElementById('splitButton').setAttribute('disabled', 'disabled')
 }
 
 // ----- Stand functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
