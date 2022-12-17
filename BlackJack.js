@@ -11,11 +11,25 @@ localHand = []
 localHandValue = []
 let returnedValue = null
 BuyIn = 2
-Currency = 100
+Currency = 20
 DD = false
+gameRunning = false
 
 // ----- Deck functions -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+document.addEventListener('keydown', (event) => { keyImputed() })
+function keyImputed() {
+    if (gameRunning == false) {
+        document.getElementById('outcome').style.display = "none"
+        if (event.key == 'ArrowDown' && BuyIn > 2) {
+            BuyIn--
+        }
+        if (event.key == 'ArrowUp' && BuyIn < Currency) {
+            BuyIn++
+        }
+        document.getElementById('buyin').innerHTML = 'Buy In = ' + (BuyIn) + ' Coins'
+    }
+}
 function generateCard(cards, suits) {
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -58,12 +72,10 @@ function closestats() {
     document.getElementById('statisticalmenu').style.display = ('none')
     document.getElementById('statstoggleon').style.display = ('block')
 }
-
 function openstatsmenu() {
     document.getElementById('statisticalmenu').style.display = ('block')
     document.getElementById('statstoggleon').style.display = ('none')
 }
-
 function disable() {
     document.getElementById('standButton').setAttribute('disabled', 'disabled')
     document.getElementById('hitmeButton').setAttribute('disabled', 'disabled')
@@ -95,6 +107,21 @@ function gameEnd() {
     if (statisticbar[8] > 0) {
         document.getElementById('WLR').innerHTML = Math.round(statisticbar[0] / statisticbar[8] * 100) + '%'
     }
+    gameRunning = false
+    if (Currency < 2) {
+        openstatsmenu()
+        document.getElementById('winOrLose').innerHTML =
+            "You're Out of Coins"
+        disable()
+        document.getElementById('dealButton').setAttribute('disabled', 'disabled')
+        document.getElementById('outcome').style.display = "block"
+        document.getElementById('greyout').style.display = "block"
+        gameRunning = true
+    }
+    if (BuyIn > Currency) {
+        BuyIn = Currency
+        document.getElementById('buyin').innerHTML = 'Buy In = ' + (BuyIn) + ' Coins'
+    }
 }
 
 // ----- Counting function --------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -123,9 +150,9 @@ function countHand(localHand) {
 
 function youLose() {
     statisticbar[1]++
-    gameEnd()
     document.getElementById('winOrLose').innerHTML =
         "You Lost"
+    gameEnd()
 }
 function youWin() {
     statisticbar[0]++
@@ -156,20 +183,20 @@ function bj() {
     statisticbar[0]++
     statisticbar[4]++
     Currency = (Currency + (BuyIn * 2))
+    document.getElementById('winOrLose').innerHTML =
+        "BLACK JACK!!!"
     gameEnd()
     document.getElementById("playersValue").innerHTML =
-        "BLACK JACK!!!"
-    document.getElementById('winOrLose').innerHTML =
         "BLACK JACK!!!"
 }
 function bbj() {
     statisticbar[1]++
     statisticbar[4]++
+    document.getElementById('winOrLose').innerHTML =
+        "You Lost"
     gameEnd()
     document.getElementById("botValue").innerHTML =
         "BLACK JACK!!!"
-    document.getElementById('winOrLose').innerHTML =
-        "You Lost"
 }
 
 // ------ New Game --------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -193,6 +220,7 @@ function resetEverything(playersHand, botHand) {
     newGame()
 }
 function newGame() {
+    gameRunning = true
     statisticbar[3]++
     statisticbar[8]++
     document.getElementById('TH').innerHTML = statisticbar[3]

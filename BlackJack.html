@@ -9,62 +9,6 @@
     <link rel="stylesheet" href="BlackJackPage.css">
     <title>BlackJack</title>
   </head>
-<div> 
-   <div class="statmenubuttons" id="statstoggleon">
-  <button class="btn btn-secondary statstoggleon dropdown-toggle" onclick="openstatsmenu()">Your Stats</button>
-</div>
-  <div class="statisticalmenu" id="statisticalmenu">
-    <table class="myStatTable table table-bordered table-dark table-sm">
-      <thead class="rowone">
-        <tr>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Hands Won</th>
-          <td class="playingWithFire" id="HW">0</td>
-        </tr>
-        <tr>
-          <th scope="row">Hands Lost</th>
-          <td class="playingWithFire" id="HL">0</td>
-        </tr>
-        <tr>
-          <th scope="row">Hands Drawn</th>
-          <td class="playingWithFire" id="HD">0</td>
-        </tr>
-        <tr>
-          <th scope="row">Total Hands</th>
-          <td class="playingWithFire" id="TH">0</td>
-        </tr>
-        <tr>
-          <th scope="row">Blackjacks</th>
-          <td class="playingWithFire" id="BJ">0</td>
-        </tr>
-        <tr>
-          <th scope="row">Total Cards Drawn</th>
-          <td class="playingWithFire" id="TCD">0</td>
-        </tr>
-        <tr>
-          <th scope="row">Double Downs</th>
-          <td class="playingWithFire" id="DD">0</td>
-        </tr>
-        <tr>
-          <th scope="row">Win Loss Rate</th>
-          <td class="playingWithFire" id="WLR">0%</td>
-        </tr>
-        <tr>
-          <th scope="row">Double Downs Success Rate</th>
-          <td class="playingWithFire" id="DDSR">0%</td>
-        </tr>
-        <tr>
-          <th scope="row" colspan="2"><button class="btn btn-secondary statstoggleoff" onclick="closestats()">Close Menu</button></th>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  </div>
   <body style="background-color: rgb(16, 143, 143)">
     <div class="aBorder"></div>
     <div class="myButtonsArntDumb">
@@ -96,26 +40,71 @@
         <p id="botValue" class="aScore">Dealer's Hand = 0</p>
     </div>
     <div class="currency">
-       <p id="Coins" class="aScore">Coins = 100</p>
+       <p id="Coins" class="aScore">Coins = 20</p>
     </div>
     <div class="buyin">
-        <p id="Coins" class="BuyBuy">Buy In = 2 Coins</p>
+        <p id="buyin" class="BuyBuy">Buy In = 2 Coins</p>
     </div>
+    <div class="greyout" id="greyout"></div>
     <div class="outcome" id="outcome">
-    <p class="outcometxt" id="winOrLose">  You Win</p>
-    </div>
-    <!-- <div class="Betting">
-      <div class="toBetUp">
-        <img class="myicon" src="Dicons\caret up.png">
-    </div>
-    <div class="buyInNumberBox">
-    <p class="outcometxt">**</p>
-    </div>
-      <div class="toBetDown">
-        <img class="myicon" src="Dicons\caret down.png">
-    </div>
-    </div> -->
-
+      <p class="outcometxt" id="winOrLose">  You Win</p>
+      </div>
+    <div> 
+      <div class="statmenubuttons" id="statstoggleon">
+     <button class="btn btn-secondary statstoggleon dropdown-toggle" onclick="openstatsmenu()">Your Stats</button>
+   </div>
+     <div class="statisticalmenu" id="statisticalmenu">
+       <table class="myStatTable table table-bordered table-dark table-sm">
+         <thead class="rowone">
+           <tr>
+             <th scope="col"></th>
+             <th scope="col"></th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <th scope="row">Hands Won</th>
+             <td class="playingWithFire" id="HW">0</td>
+           </tr>
+           <tr>
+             <th scope="row">Hands Lost</th>
+             <td class="playingWithFire" id="HL">0</td>
+           </tr>
+           <tr>
+             <th scope="row">Hands Drawn</th>
+             <td class="playingWithFire" id="HD">0</td>
+           </tr>
+           <tr>
+             <th scope="row">Total Hands</th>
+             <td class="playingWithFire" id="TH">0</td>
+           </tr>
+           <tr>
+             <th scope="row">Blackjacks</th>
+             <td class="playingWithFire" id="BJ">0</td>
+           </tr>
+           <tr>
+             <th scope="row">Total Cards Drawn</th>
+             <td class="playingWithFire" id="TCD">0</td>
+           </tr>
+           <tr>
+             <th scope="row">Double Downs</th>
+             <td class="playingWithFire" id="DD">0</td>
+           </tr>
+           <tr>
+             <th scope="row">Win Loss Rate</th>
+             <td class="playingWithFire" id="WLR">0%</td>
+           </tr>
+           <tr>
+             <th scope="row">Double Downs Success Rate</th>
+             <td class="playingWithFire" id="DDSR">0%</td>
+           </tr>
+           <tr>
+             <th scope="row" colspan="2"><button class="btn btn-secondary statstoggleoff" onclick="closestats()">Close Menu</button></th>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+     </div>
     <!-- Optional JavaScript -->
     <script src="BlackJack.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
