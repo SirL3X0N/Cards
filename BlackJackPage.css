@@ -138,42 +138,10 @@
     text-align: center;
 }
 
-.Betting {
-    position: fixed;
-    bottom: 15%;
-    right: 1%;
-    height: 40%;
-    width: 10%;
-}
-
-.toBetUp {
-    position: fixed;
-    height: 13.33%;
-    bottom: 40.5%;
-}
-
-.buyInNumberBox {
-    position: fixed;
-    bottom: 26.33%;
-    right: 4.6%;
-    height: 18.33%;
-    width: 7%;
-}
-
-.toBetDown {
-    bottom: 15%;
-    position: fixed;
-    height: 13.33%;
-}
-
-.myicon {
-    width: 60%;
-}
-
 .myStatTable {
     position: fixed;
     left: 0.5rem;
-    top: 0.5rem;
+    top: 0.3rem;
     width: 15.1rem;
     font-size: 0.75rem;
     background-color: rgba(82, 82, 82, 0.481);
@@ -186,7 +154,7 @@
 
 .statstoggleon {
     position: fixed;
-    top: 0.5rem;
+    top: 0.3rem;
     left: 0.5rem;
     background-color: rgb(125, 125, 125);
 }
@@ -202,4 +170,14 @@
 
 .statisticalmenu {
     display: none;
+}
+
+.greyout {
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(55, 55, 55, 0.484);
 }
