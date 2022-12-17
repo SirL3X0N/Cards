@@ -9,12 +9,16 @@
     <link rel="stylesheet" href="BlackJackPage.css">
     <title>BlackJack</title>
   </head>
-  <div class="">
+<div> 
+   <div class="statmenubuttons" id="statstoggleon">
+  <button class="btn btn-secondary statstoggleon dropdown-toggle" onclick="openstatsmenu()">Your Stats</button>
+</div>
+  <div class="statisticalmenu" id="statisticalmenu">
     <table class="myStatTable table table-bordered table-dark table-sm">
-      <thead>
+      <thead class="rowone">
         <tr>
-          <th scope="col">Stats</th>
-          <th scope="col" class="playingWithFire">#</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -54,16 +58,20 @@
           <th scope="row">Double Downs Success Rate</th>
           <td class="playingWithFire" id="DDSR">0%</td>
         </tr>
+        <tr>
+          <th scope="row" colspan="2"><button class="btn btn-secondary statstoggleoff" onclick="closestats()">Close Menu</button></th>
+        </tr>
       </tbody>
     </table>
+  </div>
   </div>
   <body style="background-color: rgb(16, 143, 143)">
     <div class="aBorder"></div>
     <div class="myButtonsArntDumb">
-        <Button type="button" id="dealButton" class="btn btn-light myButtonsArntDumb01 "> New Game </Button>
-        <Button type="button" id="hitmeButton" class="btn btn-light myButtonsArntDumb02"  disabled="disabled"> Hit Me </Button>
-        <Button type="button" id="standButton" class="btn btn-light myButtonsArntDumb03" disabled="disabled"> Stand </Button>
-        <Button type="button" id="DDButton" class="btn btn-light myButtonsArntDumb04" disabled="disabled"> Double Down </Button>
+        <Button type="button" id="dealButton" class="btn btn-light myButtonsArntDumb01" onclick="resetEverything(playersHand, botHand)"> New Game </Button>
+        <Button type="button" id="hitmeButton" class="btn btn-light myButtonsArntDumb02" onclick="hitPlayer(theDealtCard, playersHand, botHandValue)" disabled="disabled"> Hit Me </Button>
+        <Button type="button" id="standButton" class="btn btn-light myButtonsArntDumb03" onclick="stand(botHand, botHandValue, botHandValue, theDealtCard)" disabled="disabled"> Stand </Button>
+        <Button type="button" id="DDButton" class="btn btn-light myButtonsArntDumb04" onclick="DoubleDown(playersHand, playersHandValue, theDealtCard)" disabled="disabled"> Double Down </Button>
     </div>
     <div class="playerCardBox">
         <img id="playerCard0" class="aCard" alt="" src="picturesOfCards\None.png">

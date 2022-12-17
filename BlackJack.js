@@ -54,18 +54,16 @@ function drawCard(deck) {
 
 // ----- Button functions ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-document.getElementById('standButton').onclick = function () {
-    stand(botHand, botHandValue, botHandValue, theDealtCard)
+function closestats() {
+    document.getElementById('statisticalmenu').style.display = ('none')
+    document.getElementById('statstoggleon').style.display = ('block')
 }
-document.getElementById('dealButton').onclick = function () {
-    resetEverything(playersHand, botHand)
+
+function openstatsmenu() {
+    document.getElementById('statisticalmenu').style.display = ('block')
+    document.getElementById('statstoggleon').style.display = ('none')
 }
-document.getElementById('hitmeButton').onclick = function () {
-    hitPlayer(theDealtCard, playersHand, botHandValue)
-}
-document.getElementById('DDButton').onclick = function () {
-    DoubleDown(playersHand, playersHandValue, theDealtCard)
-}
+
 function disable() {
     document.getElementById('standButton').setAttribute('disabled', 'disabled')
     document.getElementById('hitmeButton').setAttribute('disabled', 'disabled')

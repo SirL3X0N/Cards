@@ -172,8 +172,8 @@
 
 .myStatTable {
     position: fixed;
-    left: 0rem;
-    top: 0rem;
+    left: 0.5rem;
+    top: 0.5rem;
     width: 15.1rem;
     font-size: 0.75rem;
     background-color: rgba(82, 82, 82, 0.481);
@@ -182,4 +182,24 @@
 .playingWithFire {
     width: 3.5rem;
     text-align: center;
+}
+
+.statstoggleon {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    background-color: rgb(125, 125, 125);
+}
+
+.statstoggleoff {
+    width: 100%;
+    background-color: rgb(125, 125, 125);
+}
+
+.rowone {
+    display: none;
+}
+
+.statisticalmenu {
+    display: none;
 }
